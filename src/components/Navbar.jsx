@@ -13,6 +13,20 @@ export default function Navbar({ theme, toggleTheme }) {
   const [activeSection, setActiveSection] = useState('home');
   const { lang, setLanguage, t, isRTL } = useLanguage();
 
+  const isRouteActive = (path) => location.pathname.toLowerCase() === path.toLowerCase();
+  const desktopLinkClass = (path) => `px-3 py-1.5 rounded-full border text-xs font-medium transition-all duration-200 ${
+    isRouteActive(path)
+      ? 'border-[#10B981] text-[#10B981]'
+      : 'border-transparent text-slate-200 hover:text-white'
+  }`;
+  const mobileLinkClass = (path) => `w-full py-2.5 rounded-xl text-xs font-bold border text-center flex items-center justify-center gap-2 ${
+    isRouteActive(path)
+      ? 'border-[#10B981] text-[#10B981]'
+      : theme === 'dark'
+      ? 'border-zinc-800 text-zinc-200'
+      : 'border-zinc-200 text-zinc-800'
+  }`;
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 30);
@@ -93,10 +107,18 @@ export default function Navbar({ theme, toggleTheme }) {
             onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
             className="flex items-center gap-2.5 group"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#10B981] flex items-center justify-center font-bold text-black shadow-[0_0_20px_rgba(16,185,129,0.4)] group-hover:scale-105 transition-transform duration-200">
+            {/*<div className="w-8 h-8 rounded-lg bg-[#10B981] flex items-center justify-center font-bold text-black shadow-[0_0_20px_rgba(16,185,129,0.4)] group-hover:scale-105 transition-transform duration-200">
               <img src="/src/assets/logo2.png" alt="MandiOS ERP Logo" />
+            </div>*/}
+             <div className="p-1.5 bg-white rounded-xl shadow-md border border-emerald-500/30 flex items-center justify-center shrink-0">
+              <img
+                src="/src/assets/logo.png"
+                alt="Mandi OS logo"
+                referrerPolicy="no-referrer"
+                className="h-8 w-8 object-contain rounded-lg"
+              />
             </div>
-            <div className="flex flex-col">
+            {/* <div className="flex flex-col">
               <span className={`text-xl font-bold tracking-tight flex items-center gap-1.5 ${theme === 'dark' ? 'text-white' : 'text-slate-900'
                 }`}>
                 {t.nav.brand}<span className="text-[#10B981]">OS</span>
@@ -104,6 +126,13 @@ export default function Navbar({ theme, toggleTheme }) {
                   {t.nav.badge}
                 </span>
               </span>
+            </div> */}
+             <div className="flex ">
+              <h1 className="text-sm font-bold tracking-tight uppercase text-white font-display">{("Mandi OS")}</h1>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[10px] font-semibold uppercase tracking-wider">
+                ERP
+              </span>
+              {/* <p className="text-[10px] text-emerald-400 uppercase tracking-widest font-semibold">{t("ERP Broker System")}</p> */}
             </div>
           </a>
 
@@ -115,7 +144,7 @@ export default function Navbar({ theme, toggleTheme }) {
             <div className="relative group">
               <Link
                 to="/"
-                className="px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 text-slate-200 hover:text-white"
+                className={desktopLinkClass('/')}
               >
                 {t.nav.home} <span className="text-xs">▾</span>
               </Link>
@@ -134,32 +163,32 @@ export default function Navbar({ theme, toggleTheme }) {
             </div>
             <Link
               to="/technologies"
-              className="px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 text-slate-200 hover:text-white"
+              className={desktopLinkClass('/technologies')}
             >
               {t.nav.technologies} <span className="text-xs">Technologies</span>
             </Link>
             
             <Link
               to="/gallery"
-              className="px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 text-slate-200 hover:text-white"
+              className={desktopLinkClass('/gallery')}
             >
               {t.nav.screenshots} <span className="text-xs"></span>
             </Link>
             <Link
               to="/faqs"
-              className="px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 text-slate-200 hover:text-white"
+              className={desktopLinkClass('/faqs')}
             >
               {t.nav.faqs} <span className="text-xs">FAQs</span>
             </Link>
             <Link
               to="/HowItsBuilt"
-              className="px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 text-slate-200 hover:text-white"
+              className={desktopLinkClass('/HowItsBuilt')}
             >
               {t.nav.howItsBuilt} <span className="text-xs">How It's Built</span>
             </Link>
             <Link
-              to="/Contact"
-              className="px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 text-slate-200 hover:text-white"
+              to="/contact"
+              className={desktopLinkClass('/contact')}
             >
               {t.nav.contact} <span className="text-xs">Contact</span>
             </Link>
@@ -292,42 +321,42 @@ export default function Navbar({ theme, toggleTheme }) {
            <Link
               to="/"
               onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
-              className="w-full py-2.5 rounded-xl text-xs font-bold bg-[#10B981] text-black text-center flex items-center justify-center gap-2"
+              className={mobileLinkClass('/')}
             >
             Home
             </Link>
             <Link
               to="/technologies"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-2.5 rounded-xl text-xs font-bold border border-[#10B981]/30 text-[#10B981] text-center flex items-center justify-center gap-2"
+              className={mobileLinkClass('/technologies')}
             >
               Technologies
             </Link>
             <Link
               to="/gallery"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-2.5 rounded-xl text-xs font-bold border border-[#10B981]/30 text-[#10B981] text-center flex items-center justify-center gap-2"
+              className={mobileLinkClass('/gallery')}
             >
               Gallery
             </Link>
             <Link
               to="/faqs"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-2.5 rounded-xl text-xs font-bold border border-[#10B981]/30 text-[#10B981] text-center flex items-center justify-center gap-2"
+              className={mobileLinkClass('/faqs')}
             >
              FAQS
             </Link>
             <Link
               to="/HowItsBuilt"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-2.5 rounded-xl text-xs font-bold border border-[#10B981]/30 text-[#10B981] text-center flex items-center justify-center gap-2"
+              className={mobileLinkClass('/HowItsBuilt')}
             >
               How It's Built
             </Link>
             <Link
               to="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-2.5 rounded-xl text-xs font-bold border border-[#10B981]/30 text-[#10B981] text-center flex items-center justify-center gap-2"
+              className={mobileLinkClass('/contact')}
             >
               contact
             </Link>

@@ -1,13 +1,12 @@
 import React from 'react';
-import { 
+import {
   Layers, MessageSquare, Mail, Linkedin, Github, Facebook,
-  ArrowUp 
+  ArrowUp
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-
+import { Link } from 'react-router-dom';
 export default function Footer({ theme }) {
   const { lang, t } = useLanguage();
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -16,15 +15,35 @@ export default function Footer({ theme }) {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
-
+  const footerLinks = [
+    {
+      name: "Home",
+      link: "/"
+    },
+    {
+      name: "Technologies",
+      link: "/technologies"
+    }, {
+      name: "Gallery",
+      link: "/gallery"
+    }, {
+      name: "Faqs",
+      link: "/faqs"
+    }, {
+      name: "How Its's Built",
+      link: "/HowItsBuilt"
+    }, {
+      name: "Contact",
+      link: "/contact"
+    },
+  ]
   return (
-    <footer className={`border-t relative transition-colors ${
-      theme === 'dark' ? 'bg-[#0a0a0b] border-white/10 text-slate-300' : 'bg-slate-900 border-slate-800 text-slate-200'
-    }`}>
+    <footer className={`border-t relative transition-colors ${theme === 'dark' ? 'bg-[#0a0a0b] border-white/10 text-slate-300' : 'bg-slate-900 border-slate-800 text-slate-200'
+      }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
-          
+
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
@@ -51,12 +70,12 @@ export default function Footer({ theme }) {
                 <MessageSquare className="w-4 h-4" />
               </a>
               <a
-               onClick={() => {
-                    window.open(
-                      `https://mail.google.com/mail/?view=cm&fs=1&to=mandioserp@gmail.com`,
-                      "_blank"
-                    );
-                  }}
+                onClick={() => {
+                  window.open(
+                    `https://mail.google.com/mail/?view=cm&fs=1&to=mandioserp@gmail.com`,
+                    "_blank"
+                  );
+                }}
                 className="p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-[#10B981] hover:text-black text-slate-300 transition-colors"
                 aria-label="Email"
               >
@@ -85,13 +104,12 @@ export default function Footer({ theme }) {
 
           {/* Col 2: Navigation Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#10B981] mb-4">{t.footer.quickNav}</h4>
-            <ul className="space-y-2.5 text-xs font-medium text-slate-400">
-              <li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="hover:text-[#10B981] transition-colors">{t.nav.home}</a></li>
-              <li><a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('#about'); }} className="hover:text-[#10B981] transition-colors">{t.nav.about}</a></li>
-              <li><a href="#modules" onClick={(e) => { e.preventDefault(); scrollToSection('#modules'); }} className="hover:text-[#10B981] transition-colors">{t.nav.modules}</a></li>
-              <li><a href="#features" onClick={(e) => { e.preventDefault(); scrollToSection('#features'); }} className="hover:text-[#10B981] transition-colors">{t.nav.features}</a></li>
-              <li><a href="#screenshots" onClick={(e) => { e.preventDefault(); scrollToSection('#screenshots'); }} className="hover:text-[#10B981] transition-colors">{t.nav.screenshots}</a></li>
+            <h4 className="text-xs uppercase tracking-wider text-[#10B981] mb-4">{t.footer.quickNav}</h4>
+            <ul className="space-y-2.5 text-xs font-medium text-slate-400 font- flex flex-col">
+              {footerLinks.map((links) =>
+                <Link to={links.link}>{links.name}</Link>
+              )}
+
             </ul>
           </div>
 

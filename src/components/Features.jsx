@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { getPowerfulFeatures } from '../data';
 import { useLanguage } from '../context/LanguageContext';
@@ -7,13 +7,8 @@ import { Check } from 'lucide-react';
 export default function Features({ theme }) {
   const { lang, t } = useLanguage();
   const powerfulFeatures = getPowerfulFeatures(lang);
-  const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', 'Architecture', 'Security', 'Compliance', 'Portals', 'UX', 'Reporting'];
 
-  const filteredFeatures = powerfulFeatures.filter((feat) => {
-    return selectedCategory === 'All' || feat.category === selectedCategory;
-  });
 
   return (
     <section id="features" className={`py-20 md:py-28 relative ${
@@ -44,30 +39,6 @@ export default function Features({ theme }) {
           </p>
         </motion.div>
 
-        {/* Category Pill Filters */}
-        <motion.div 
-          className="flex flex-wrap items-center justify-center gap-2 mb-10 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                selectedCategory === cat
-                  ? 'bg-[#10B981] text-black font-bold shadow-[0_0_15px_rgba(16,185,129,0.3)]'
-                  : theme === 'dark'
-                  ? 'bg-white/5 border border-white/10 text-slate-400 hover:text-white'
-                  : 'bg-slate-100 border border-slate-200 text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              {cat === 'All' && lang === 'ur' ? 'تمام خصوصیات' : cat}
-            </button>
-          ))}
-        </motion.div>
 
         {/* Features Grid */}
         <motion.div 
@@ -85,7 +56,7 @@ export default function Features({ theme }) {
             }
           }}
         >
-          {filteredFeatures.map((feature) => (
+          {powerfulFeatures.map((feature) => (
             <motion.div
               key={feature.id}
               variants={{ hidden: { opacity: 0, y: 25, scale: 0.97 }, visible: { opacity: 1, y: 0, scale: 1 } }}

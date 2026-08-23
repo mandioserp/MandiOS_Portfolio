@@ -250,9 +250,9 @@ export default function Stats({ theme }) {
                   <Icon className="w-4 h-4" />
                 </div>
                 <div className="min-w-0">
-                  <div className={`text-xs font-bold truncate ${theme === 'dark' ? 'text-white' : 'text-slate-900'
+                  <div className={`text-xs font-bold  ${theme === 'dark' ? 'text-white' : 'text-slate-900'
                     }`}>{pillar.title}</div>
-                  <div className={`text-[10px] truncate ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                  <div className={`text-[10px]  ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
                     {pillar.desc}
                   </div>
                 </div>

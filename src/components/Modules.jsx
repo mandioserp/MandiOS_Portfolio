@@ -42,7 +42,12 @@ export default function Modules({ theme }) {
     const category = (mod.category || '').trim().toLowerCase();
 
     if (category.includes('overview') || category.includes('بنیادی')) return 'overview';
-    if (category.includes('operation') || category.includes('عملیات')) return 'operations';
+    if (
+      category.includes('operation') ||
+      category.includes('عملیات') ||
+      category.includes('آپریشن') ||
+      category.includes('عملیاتی')
+    ) return 'operations';
     if (category.includes('account') || category.includes('finance') || category.includes('مالیات') || category.includes('کھاتہ')) return 'financials';
     if (category.includes('report') || category.includes('administr') || category.includes('سسٹم') || category.includes('سیکیورٹی')) return 'system';
 
@@ -114,7 +119,7 @@ export default function Modules({ theme }) {
         >
           
           {/* Categories */}
-          <div className={`flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-full border backdrop-blur-md ${
+          {/* <div className={`flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-full border backdrop-blur-md ${
             theme === 'dark' ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-white shadow-sm'
           }`}>
             {tabs.map((tab) => (
@@ -132,7 +137,7 @@ export default function Modules({ theme }) {
                 {tab.label}
               </button>
             ))}
-          </div>
+          </div> */}
 
           {/* Search Box */}
           <div className="relative w-full sm:w-64">

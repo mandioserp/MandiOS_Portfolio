@@ -280,7 +280,7 @@ export const CORE_MODULES_UR = [
   {
     id: 'sales',
     name: 'بولی و فروخت بلنگ',
-    category: 'بنیادی امور',
+    category: 'عملیات',
     icon: 'Receipt',
     shortDescription: 'صبح کی تیز رفتار بولی بلنگ، خریدار بل واؤچر اور واٹس ایپ پر ارسال۔',
     detailedDescription: 'صبح کے آکشن کے لیے تیز ترین بلنگ انٹرفیس۔ خریدار کی کریڈٹ لمیٹ الرٹ اور برائے راست واٹس ایپ بل۔',
@@ -290,7 +290,7 @@ export const CORE_MODULES_UR = [
   {
     id: 'customers',
     name: 'خریداران و کریڈٹ کنٹرول',
-    category: 'بنیادی امور',
+    category: 'عملیات',
     icon: 'Users',
     shortDescription: 'تھوک خریداروں کی حدِ قرضہ (کریڈٹ لمیٹ)، بقایا جات اور واٹس ایپ لیجر۔',
     detailedDescription: 'خریداروں کے کھاتوں کی مکمل دیکھ بھال۔ ادائیگی کی ہسٹری، بقایا جات کی عمر (aging) اور واٹس ایپ لیجر رپورٹ۔',
@@ -300,7 +300,7 @@ export const CORE_MODULES_UR = [
   {
     id: 'suppliers',
     name: 'کاشتکاران اور آڑھت کھاتہ',
-    category: 'بنیادی امور',
+    category: 'عملیات',
     icon: 'UserCheck',
     shortDescription: 'منڈی پرچی (کاشتکار حتمی حساب)، آڑھت کٹوتی، حمالی اور پیشگی رقم۔',
     detailedDescription: 'کاشتکار کے حتمی حساب کی تیاری۔ آڑھت فیصد، حمالی مزدوری، باردانہ اور پیشگی لون (Advance) کی خودکار کٹوتی۔',
