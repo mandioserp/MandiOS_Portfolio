@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/* Jameel Noori Nastaleeq @font-face declarations from npm package */
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq';
+  src: url('jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jameel Noori Nastaliq';
+  src: url('jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JameelNooriNastaliq';
+  src: url('jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq Kasheeda';
+  src: url('jameel-noori-nastaliq-kasheeda/fonts/JameelNooriNastaliqKasheeda3.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Comprehensive RTL and Urdu Jameel Noori Nastaleeq Typography Rules */
+:root[dir="rtl"],
+:root[lang="ur"],
+[dir="rtl"],
+[lang="ur"] {
+  --font-sans: 'Jameel Noori Nastaleeq', 'Jameel Noori Nastaliq', 'Noto Nastaliq Urdu', 'Noto Sans Arabic', sans-serif;
+  font-family: 'Jameel Noori Nastaleeq', 'Jameel Noori Nastaliq', 'Noto Nastaliq Urdu', 'Noto Sans Arabic', 'Poppins', system-ui, sans-serif !important;
+  line-height: 1.85;
+}
+
+/* Apply Jameel Noori Nastaleeq font to ALL elements in Urdu/RTL mode */
+[dir="rtl"] *,
+[lang="ur"] * {
+  font-family: 'Jameel Noori Nastaleeq', 'Jameel Noori Nastaliq', 'Noto Nastaliq Urdu', 'Noto Sans Arabic', sans-serif !important;
+}
+
+/* Proper heading line heights for Nastaleeq script */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[lang="ur"] h1,
+[lang="ur"] h2,
+[lang="ur"] h3,
+[lang="ur"] h4,
+[lang="ur"] h5,
+[lang="ur"] h6 {
+  font-family: 'Jameel Noori Nastaleeq', 'Jameel Noori Nastaliq', 'Noto Nastaliq Urdu', serif !important;
+  line-height: 1.85 !important;
+}
+
+/* Preserve monospace font for code, numbers, and badges explicitly marked with font-mono */
+[dir="rtl"] .font-mono,
+[lang="ur"] .font-mono,
+[dir="rtl"] .font-mono *,
+[lang="ur"] .font-mono * {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
+/* Language Transition Fade Effect */
+.lang-transition {
+  transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+}
+
+.lang-changing {
+  opacity: 0.85;
+  transform: scale(0.998);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 3s ease-in-out infinite;
+}

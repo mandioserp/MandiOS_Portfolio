@@ -1,0 +1,6 @@
+{
+  "name": "MandiOS ERP Portfolio",
+  "description": "Portfolio website showcasing MandiOS ERP solution for Fruit & Vegetable Commission Brokers",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
