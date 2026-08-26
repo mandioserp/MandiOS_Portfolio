@@ -4,7 +4,7 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-
+import logo from "../assets/logo.png"
 export default function Navbar({ theme, toggleTheme }) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -112,7 +112,7 @@ export default function Navbar({ theme, toggleTheme }) {
             </div>*/}
              <div className="p-1.5 bg-white rounded-xl shadow-md border border-emerald-500/30 flex items-center justify-center shrink-0">
               <img
-                src="/src/assets/logo.png"
+                src={logo}
                 alt="Mandi OS logo"
                 referrerPolicy="no-referrer"
                 className="h-8 w-8 object-contain rounded-lg"
