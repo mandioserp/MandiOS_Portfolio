@@ -320,7 +320,6 @@ export default function Navbar({ theme, toggleTheme }) {
           <div className="grid grid-cols-2 gap-2">
            <Link
               to="/"
-              onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
               className={mobileLinkClass('/')}
             >
             Home
