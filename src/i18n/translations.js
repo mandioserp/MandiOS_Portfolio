@@ -57,8 +57,8 @@ export const translations = {
     },
     modules: {
       tag: "Integrated Business Architecture",
-      title: "15+ Core Business Modules",
-      heading: "15+ Core Business Modules",
+      title: "18+ Core Business Modules",
+      heading: "18+ Core Business Modules",
       subtitle: "Comprehensive busness modules built specifically for fruit & vegetable commission agents to manage lots, auctions, khatas, commissions, stock, payments, and complete accounting from one platform.",
       viewDetails: "View Details",
       coreTechFeatures: "Core Technical Specifications",
