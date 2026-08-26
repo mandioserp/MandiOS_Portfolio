@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-
+import RoleSectionHeading from "./RoleSectionHeading";
+import { ShieldCheck, Users ,Truck,ClipboardList} from "lucide-react";
 /**
  * ─────────────────────────────────────────────────────────────────────────
  * HOW TO REPLACE PLACEHOLDER IMAGES
@@ -41,6 +42,7 @@ const modules = [
     icon: "🏠",
     description:
       "A polished landing page that introduces MandiOS to your team and clients before they sign in to their daily workspace.",
+      imageCount: 3,
   },
   {
     slug: "dashboard",
@@ -48,6 +50,7 @@ const modules = [
     icon: "📊",
     description:
       "A real-time command centre showing today's sales, purchases, outstanding dues, and stock levels at a single glance.",
+    imageCount: 7, // override default of 3 images for this module
   },
   {
     slug: "truck-logs-logistics",
@@ -55,6 +58,7 @@ const modules = [
     icon: "🚚",
     description:
       "Track every truck arrival and departure, consignment details, loading slips, and transport charges from mandi floor to delivery.",
+       imageCount:3
   },
   {
     slug: "clerks-auth",
@@ -62,6 +66,7 @@ const modules = [
     icon: "🔐",
     description:
       "Secure, role-based sign-in for munshis and clerks, keeping every daily entry accountable to the person who made it.",
+      imageCount: 2,
   },
   {
     slug: "employee-salary",
@@ -69,6 +74,7 @@ const modules = [
     icon: "👥",
     description:
       "Maintain staff records, attendance, and salary disbursements for every worker on your mandi floor and office team.",
+      imageCount: 7,
   },
   {
     slug: "suppliers-catalog",
@@ -76,6 +82,7 @@ const modules = [
     icon: "🌾",
     description:
       "A complete directory of growers and suppliers with contact details, consignment history, and khata balances at your fingertips.",
+       imageCount:3
   },
   {
     slug: "customers-portfolio",
@@ -90,6 +97,7 @@ const modules = [
     icon: "🍎",
     description:
       "Organize every fruit and vegetable variety with categories, units, and pricing so listings and sales stay consistent.",
+      imageCount: 3,
   },
   {
     slug: "stock-supplies",
@@ -97,6 +105,7 @@ const modules = [
     icon: "📦",
     description:
       "Monitor incoming stock, bardana usage, and current inventory levels across the mandi in real time.",
+      imageCount:2
   },
   {
     slug: "sales-ledger",
@@ -104,6 +113,15 @@ const modules = [
     icon: "💰",
     description:
       "Manage sales transactions, sold consignments, customer ledgers, commissions and complete sales records from one place.",
+      imageCount: 6,
+  },
+  {
+    slug: "returns",
+    name: "Returns",
+    icon: "↩️",
+    description:
+      "Manage sales transactions, sold consignments, customer ledgers, commissions and complete sales records from one place.",
+      imageCount: 4,
   },
   {
     slug: "pay-or-receive",
@@ -111,13 +129,7 @@ const modules = [
     icon: "🔁",
     description:
       "Track peshgi advances given and received, along with pending dues, so every rupee owed is easy to follow.",
-  },
-  {
-    slug: "payments-receipts",
-    name: "Payments & Receipts",
-    icon: "🧾",
-    description:
-      "Record cash and bank transactions, issue receipts, and keep the daily roznamcha reconciled without extra paperwork.",
+      imageCount: 2,
   },
   {
     slug: "reports",
@@ -125,6 +137,7 @@ const modules = [
     icon: "📑",
     description:
       "Generate print-ready ledgers, deduction summaries, and sales reports that keep every arthi and stakeholder informed.",
+      imageCount: 3,
   },
   {
     slug: "audit-log-activity",
@@ -132,21 +145,23 @@ const modules = [
     icon: "🕵️",
     description:
       "A transparent trail of every action taken in the system, so changes to records are always traceable.",
-  },
-  {
-    slug: "deleted-users-trash",
-    name: "Deleted Users / Trash",
-    icon: "🗑️",
-    description:
-      "Recover accidentally removed records or permanently clear them out, keeping your data clean without losing accountability.",
+      imageCount:1,
   },
 ].map((m, i) => ({
   ...m,
-  coverImage: `${IMAGE_BASE}/${m.slug}/cover.jpg`,
-  images: [1, 2, 3].map((n) => `${IMAGE_BASE}/${m.slug}/${n}.jpg`),
+  coverImage: m.coverImage || `${IMAGE_BASE}/${m.slug}/cover.jpg`,
+  images:
+    m.images || // explicit override wins if provided
+    Array.from({ length: m.imageCount ?? 3 }, (_, n) => `${IMAGE_BASE}/${m.slug}/${n + 1}.jpg`),
   gradient: COVER_GRADIENTS[i % COVER_GRADIENTS.length],
 }));
+// <-------Array for Supplier Screenshots------->
+const supplierScreenshots = [
 
+]
+const customerScreenshots = [
+
+]
 /* ── tiny inline icons (no external icon library required) ───────────── */
 
 function IconChevronLeft(props) {
@@ -240,19 +255,19 @@ function ModuleCard({ module, onOpen, theme }) {
           onOpen();
         }
       }}
-      className={`group relative flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 cursor-pointer ${
-        theme === "dark"
+      className={`group relative flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 cursor-pointer ${theme === "dark"
           ? "bg-white/5 border-white/10 hover:border-[#10B981]/50 focus-visible:ring-offset-[#0a0a0b]"
           : "bg-white border-slate-200 hover:border-[#10B981]/50 focus-visible:ring-offset-slate-50"
-      }`}
+        }`}
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden">
+      <div className="relative w-full overflow-hidden">
         <ModuleThumb
           src={module.coverImage}
           alt={`${module.name} screenshot`}
           icon={module.icon}
           gradient={module.gradient}
-          className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          className="block w-full h-auto transition-transform duration-500 ease-out group-hover:scale-105"
+          fallbackClassName="aspect-[4/3] w-full transition-transform duration-500 ease-out group-hover:scale-105"
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <div className="absolute inset-x-0 bottom-0 flex translate-y-3 items-center gap-1.5 p-4 text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
@@ -390,18 +405,16 @@ function ModuleModal({ module, onClose, theme }) {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm transition-opacity duration-300 ${
-        visible ? "opacity-100" : "opacity-0"
-      }`}
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm transition-opacity duration-300 ${visible ? "opacity-100" : "opacity-0"
+        }`}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label={`${module.name} screenshots`}
     >
       <div
-        className={`relative w-full max-w-3xl overflow-hidden rounded-2xl border shadow-2xl transition-all duration-300 ${
-          visible ? "scale-100 opacity-100" : "scale-95 opacity-0"
-        } ${theme === "dark" ? "bg-[#111113] border-white/10" : "bg-white border-slate-200"}`}
+        className={`relative w-full max-w-3xl overflow-hidden rounded-2xl border shadow-2xl transition-all duration-300 ${visible ? "scale-100 opacity-100" : "scale-95 opacity-0"
+          } ${theme === "dark" ? "bg-[#111113] border-white/10" : "bg-white border-slate-200"}`}
         onClick={(e) => e.stopPropagation()}
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
@@ -433,7 +446,7 @@ function ModuleModal({ module, onClose, theme }) {
                   alt={`${module.name} screenshot ${i + 1} of ${images.length}`}
                   icon={module.icon}
                   gradient={module.gradient}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               </div>
             ))}
@@ -470,13 +483,12 @@ function ModuleModal({ module, onClose, theme }) {
                 onClick={() => handleDotClick(i)}
                 aria-label={`Go to screenshot ${i + 1}`}
                 aria-current={i === currentIndex}
-                className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 ${
-                  i === currentIndex
+                className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 ${i === currentIndex
                     ? "w-6 bg-emerald-600"
                     : theme === "dark"
                       ? "w-2 bg-slate-600 hover:bg-slate-500"
                       : "w-2 bg-slate-300 hover:bg-slate-400"
-                }`}
+                  }`}
               />
             ))}
           </div>
@@ -499,9 +511,8 @@ export default function Gallery({ theme }) {
   const [activeModule, setActiveModule] = useState(null);
 
   return (
-    <section className={`py-16 md:py-24 ${
-      theme === "dark" ? "bg-[#0a0a0b]" : "bg-gradient-to-b from-white to-emerald-50/40"
-    }`}>
+    <section className={`py-16 md:py-24 ${theme === "dark" ? "bg-[#0a0a0b]" : "bg-gradient-to-b from-white to-emerald-50/40"
+      }`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-12 max-w-2xl text-center">
           <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest text-emerald-600">
@@ -515,7 +526,12 @@ export default function Gallery({ theme }) {
             brokerage business.
           </p>
         </div>
-
+        <RoleSectionHeading
+          role="Admin"
+          tagline="Full system control — manage tenants, staff, and every module from one place."
+          icon={<ShieldCheck className="h-3.5 w-3.5 text-emerald-500" />}
+          theme={theme}
+        />
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
           {modules.map((module) => (
             <ModuleCard key={module.slug} module={module} theme={theme} onOpen={() => setActiveModule(module)} />
@@ -524,6 +540,50 @@ export default function Gallery({ theme }) {
       </div>
 
       {activeModule && <ModuleModal module={activeModule} theme={theme} onClose={() => setActiveModule(null)} />}
+      <div className="mt-5">
+        <RoleSectionHeading
+          role="Customer"
+          tagline="A dedicated portal for buyers to view their orders, track dues, and stay updated on every transaction with their arthi."
+          icon={<Users className="h-3.5 w-3.5 text-emerald-500" />}
+          theme={theme}
+        />
+      </div>
+      <div className="relative w-full overflow-hidden">
+
+        {supplierScreenshots.map((s) => {
+          <div
+            className="block w-full h-auto transition-transform duration-500 ease-out group-hover:scale-105"
+            fallbackClassName="aspect-[4/3] w-full transition-transform duration-500 ease-out group-hover:scale-105"
+
+          >
+
+          </div>
+        })}
+      </div>
+
+      <div className="mt-5">
+        <RoleSectionHeading
+          role="Supplier"
+          tagline="A simple portal for suppliers to track their consignments, view lot settlements, and stay updated on every payment from their arthi."
+          icon={<Truck className="h-3.5 w-3.5 text-emerald-500" />}
+          theme={theme}
+        />
+        {customerScreenshots.map((s) => {
+
+        })}
+      </div>
+      <div className="mt-5">
+       <RoleSectionHeading
+  role="Munshi"
+  tagline="Munshi ke liye tez aur asaan roznamcha entry — sales, purchases, aur payments record karein bina kisi jhanjhat ke."
+  icon={<ClipboardList className="h-3.5 w-3.5 text-emerald-500" />}
+  theme={theme}
+/>
+        {customerScreenshots.map((s) => {
+
+        })}
+      </div>
     </section>
+
   );
 }

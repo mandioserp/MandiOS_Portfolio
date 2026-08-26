@@ -1,13 +1,25 @@
 import React, { useState ,useEffect} from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
+
 import { 
   ArrowRight, MessageSquare, ShieldCheck,ChevronLeft, ChevronRight, TrendingUp, Zap, Building2
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import DashboardMockup from '../assets/dashboard.png';
+import batchSale from "../assets/batch sale.png"
+import cutomerModule from "../assets/customer_module.png"
+import financialDashboard from "../assets/dashboard_financial_summary.png"
+import payOrRecieve from "../assets/pay-or-recieve.png"
+import PaymentRecepeits from "../assets/paymets & recepiets.png"
+import productModule from "../assets/product_module.png"
+import reports from "../assets/reports.png"
+import report2 from "../assets/report-2.png"
+import SOldConsigments from "../assets/sold_consigment .png"
+import StockSupplies from "../assets/stockSupplier_module.png"
 export default function Hero({ theme }) {
   const [activeTab, setActiveTab] = useState('auction');
   const { lang, t, isRTL } = useLanguage();
+const [current, setCurrent] = useState(0);
+const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
 
   const scrollToSection = (id) => {
     const el = document.querySelector(id);
@@ -15,26 +27,46 @@ export default function Hero({ theme }) {
   };
   //images for crousal
 const images = [
-  DashboardMockup,
-  DashboardMockup,
- DashboardMockup,
-  DashboardMockup,
+  financialDashboard,
+  batchSale,
+  cutomerModule,
+  payOrRecieve,
+  PaymentRecepeits,
+  productModule,
+  reports,
+  report2,
+  SOldConsigments,
+  StockSupplies
 ];
-const [current, setCurrent] = useState(0);
+
 const nextSlide = () => {
-    setCurrent((prev) => (prev + 1) % images.length);
-  };
+  setDirection(1);
+  setCurrent((prev) => (prev + 1) % images.length);
+};
 
-  const prevSlide = () => {
-    setCurrent((prev) => (prev - 1 + images.length) % images.length);
-  };
+const prevSlide = () => {
+  setDirection(-1);
+  setCurrent((prev) => (prev - 1 + images.length) % images.length);
+};
+
+const goToSlide = (index) => {
+  setDirection(index > current ? 1 : -1);
+  setCurrent(index);
+};
+
 useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 3000);
+  const interval = setInterval(() => {
+    setDirection(1);
+    setCurrent((prev) => (prev + 1) % images.length);
+  }, 3000);
+  return () => clearInterval(interval);
+}, [images.length]);
 
-    return () => clearInterval(interval);
-  }, []);
+const slideVariants = {
+  enter: (dir) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (dir) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
+};
   return (
     <section id="home" className="relative pt-28 pb-20 md:pt-36 md:pb-32 overflow-hidden">
       
@@ -140,9 +172,12 @@ useEffect(() => {
           </motion.div>
 
           {/* Call to Actions */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 cursor-pointer">
             <button
-              onClick={() => scrollToSection('#sandbox')}
+              onClick={() => {
+                scrollToSection('#sandbox');
+                window.open('https://demo.mandioserp.com', '_blank', 'noopener,noreferrer');
+              }}
               className="px-7 py-3.5 bg-[#10B981] text-black font-bold rounded-full text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] transition-all flex items-center gap-2 hover:scale-105 active:scale-95"
             >
               <span>{t.hero.btnLiveDemo}</span>
@@ -150,7 +185,7 @@ useEffect(() => {
             </button>
 
             <a
-              href="https://wa.me/?text=Hello!%20I%20am%20interested%20in%20MandiOS%20ERP%20Software"
+              href="https://wa.me/923704380337?text=Hello!%20I%20am%20interested%20in%20MandiOS%20ERP%20Software"
               target="_blank"
               rel="noopener noreferrer"
               className={`px-6 py-3.5 rounded-full text-sm font-semibold border transition-all flex items-center gap-2 hover:scale-105 active:scale-95 ${
@@ -179,50 +214,55 @@ useEffect(() => {
           <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/30 via-teal-500/20 to-emerald-600/30 rounded-3xl blur-2xl opacity-50 -z-10" />
 {/* 
           {/* Laptop Screen Frame */}
-          <div className="relative w-full h-[500px] overflow-hidden rounded-xl group">
-      {/* Images */}
-      {images.map((image, index) => (
-        <img
-          key={index}
-          src={image}
-          alt={`Slide ${index + 1}`}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-            current === index ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      ))}
+{/* Laptop Screen Frame */}
+<div className="relative w-full aspect-[2/1] max-h-[500px] overflow-hidden rounded-xl group">
+  <AnimatePresence initial={false} custom={direction}>
+    <motion.img
+      key={current}
+      src={images[current]}
+      alt={`Slide ${current + 1}`}
+      custom={direction}
+      variants={slideVariants}
+      initial="enter"
+      animate="center"
+      exit="exit"
+      transition={{
+  x: { type: "spring", stiffness: 80, damping: 20 },
+  opacity: { duration: 0.5 },
+}}
+      className="absolute inset-0 w-full h-full object-contain object-center bg-black"
+    />
+  </AnimatePresence>
 
-      {/* Previous Button */}
+  {/* Previous Button */}
+  <button
+    onClick={prevSlide}
+    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full transition opacity-0 group-hover:opacity-100 z-10"
+  >
+    <ChevronLeft size={28} />
+  </button>
+
+  {/* Next Button */}
+  <button
+    onClick={nextSlide}
+    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full transition opacity-0 group-hover:opacity-100 z-10"
+  >
+    <ChevronRight size={28} />
+  </button>
+
+  {/* Dots */}
+  <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+    {images.map((_, index) => (
       <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full transition opacity-0 group-hover:opacity-100"
-      >
-        <ChevronLeft size={28} />
-      </button>
-
-      {/* Next Button */}
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full transition opacity-0 group-hover:opacity-100"
-      >
-        <ChevronRight size={28} />
-      </button>
-
-      {/* Dots */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrent(index)}
-            className={`h-3 w-3 rounded-full transition-all ${
-              current === index
-                ? "bg-white w-8"
-                : "bg-white/50 hover:bg-white"
-            }`}
-          />
-        ))}
-      </div>
-    </div>
+        key={index}
+        onClick={() => goToSlide(index)}
+        className={`h-3 w-3 rounded-full transition-all ${
+          current === index ? "bg-white w-8" : "bg-white/50 hover:bg-white"
+        }`}
+      />
+    ))}
+  </div>
+</div>
         {/* <img src={DashboardMockup} alt="Dashboard img" /> */}
           {/* Floating Feature Badges around Laptop */}
           <motion.div 
@@ -252,7 +292,7 @@ useEffect(() => {
               <Zap className="w-5 h-5" />
             </div>
             <div>
-              <span className="text-xs font-bold block">{lang === 'ur' ? 'فوری منڈی پرچی پرنٹ' : '< 10s Mandi Patti'}</span>
+              <span className="text-xs font-bold block">{lang === 'ur' ? 'فوری منڈی پرچی پرنٹ' : 'Instant Order Printing'}</span>
               <span className="text-[11px] text-zinc-400">{lang === 'ur' ? 'خودکار آڑھت و حمالی حساب' : 'Automated Commission Math'}</span>
             </div>
           </motion.div>

@@ -17,7 +17,7 @@ export default function Navbar({ theme, toggleTheme }) {
   const desktopLinkClass = (path) => `px-3 py-1.5 rounded-full border text-xs font-medium transition-all duration-200 ${
     isRouteActive(path)
       ? 'border-[#10B981] text-[#10B981]'
-      : 'border-transparent text-slate-200 hover:text-white'
+      : 'border-transparen hover:text-white'
   }`;
   const mobileLinkClass = (path) => `w-full py-2.5 rounded-xl text-xs font-bold border text-center flex items-center justify-center gap-2 ${
     isRouteActive(path)
@@ -128,8 +128,8 @@ export default function Navbar({ theme, toggleTheme }) {
               </span>
             </div> */}
              <div className="flex ">
-              <h1 className="text-sm font-bold tracking-tight uppercase text-white font-display">{("Mandi OS")}</h1>
-              <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[10px] font-semibold uppercase tracking-wider">
+              <h1 className={`text-sm font-bold tracking-tight uppercase ${theme==="dark"?"text-white":"text-black"} font-display`}>{("Mandi OS")}</h1>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 ms-0.5 border border-emerald-500/30 text-emerald-400 text-[10px] font-semibold uppercase tracking-wider">
                 ERP
               </span>
               {/* <p className="text-[10px] text-emerald-400 uppercase tracking-widest font-semibold">{t("ERP Broker System")}</p> */}
@@ -249,7 +249,7 @@ export default function Navbar({ theme, toggleTheme }) {
             {/* Live Demo Button */}
             <a
               href="#sandbox"
-              onClick={(e) => { e.preventDefault(); scrollToSection('#sandbox'); }}
+              onClick={(e) => { e.preventDefault(); scrollToSection('#sandbox'); window.open('https://demo.mandioserp.com', '_blank', 'noopener,noreferrer'); }}
               className="px-4 py-2 bg-[#10B981] text-black rounded-full text-xs font-semibold shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] transition-all flex items-center gap-1.5"
             >
               <span>{t.nav.liveDemo}</span>
