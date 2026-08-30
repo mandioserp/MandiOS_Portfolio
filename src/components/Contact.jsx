@@ -139,7 +139,7 @@ const whatsappHiMessage = encodeURIComponent("Hello! I would like to inquire abo
                   <div>
                     <span className={`text-xs font-bold block ${theme === 'dark' ? 'text-white' : 'text-slate-900'
                       }`}>{t.contact.emailLabel}</span>
-                    <span className="text-[11px] text-slate-400 font-mono">raheelrugh677@gmail.com</span>
+                    <span className="text-[11px] text-slate-400 font-mono">mandioserp@gmail.com</span>
                   </div>
                 </a>
 

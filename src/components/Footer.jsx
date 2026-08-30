@@ -132,7 +132,7 @@ export default function Footer({ theme }) {
             <div className="space-y-2 text-xs text-slate-400">
               <div className="font-bold text-white">{t.footer.devRole}</div>
               <div>{t.footer.devSpec}</div>
-              <div className="text-[#10B981] font-mono pt-2">raheelrugh677@gmail.com</div>
+              <div className="text-[#10B981] font-mono pt-2">mandioserp@gmail.com</div>
             </div>
           </div>
 
