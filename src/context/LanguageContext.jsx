@@ -5,7 +5,7 @@ const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
   const [lang, setLangState] = useState(() => {
-    return localStorage.getItem('mandios_lang') || 'en';
+    return localStorage.getItem('mandios_lang') || 'ur';
   });
   const [isChanging, setIsChanging] = useState(false);
 
