@@ -17,6 +17,7 @@ import Footer from './components/Footer';
 import FloatingControls from './components/FloatingControls';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Gallery from './components/Gallery';
+import Pricing from './components/Pricing';
 export default function App() {
   const [theme, setTheme] = useState('dark');
 
@@ -93,6 +94,7 @@ export default function App() {
                   <Contact theme={theme} />
                 </>
               } />
+              <Route path='pricing' element={<Pricing theme={theme} />} />
              
             </Routes>
           </main>

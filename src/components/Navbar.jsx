@@ -192,6 +192,12 @@ export default function Navbar({ theme, toggleTheme }) {
             >
               {t.nav.contact} <span className="text-xs">Contact</span>
             </Link>
+            <Link
+              to="/pricing"
+              className={desktopLinkClass('/pricing')}
+            >
+              {t.nav.pricing}
+            </Link>
             {/* {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -358,6 +364,13 @@ export default function Navbar({ theme, toggleTheme }) {
               className={mobileLinkClass('/contact')}
             >
               contact
+            </Link>
+            <Link
+              to="/pricing"
+              onClick={() => setMobileMenuOpen(false)}
+              className={mobileLinkClass('/pricing')}
+            >
+              {t.nav.pricing}
             </Link>
           </div>
 

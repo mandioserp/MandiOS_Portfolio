@@ -10,6 +10,7 @@ export const translations = {
       process: "How It's Built",
       challenges: "Challenges",
       roadmap: "Roadmap",
+      pricing: "Pricing",
       liveDemo: "View Live",
       whatsAppBtn: "WhatsApp"
     },
@@ -229,6 +230,41 @@ export const translations = {
       devSpec: "Specializing in SaaS ERPs, Multi-Tenant Backends, & Custom Dashboards.",
       rights: "MandiOS ERP Portfolio. Independently Designed & Developed.",
       backToTop: "Back to Top"
+    },
+    pricing: {
+      metaTitle: "MandiOS Pricing | Simple ERP Pricing for Commission Brokers",
+      metaDescription: "MandiOS offers simple pricing for fruit and vegetable commission brokers. Get complete mandi business management for Rs. 5,000/month with a 30-day free trial.",
+      eyebrow: "Simple, transparent pricing",
+      heroTitle: "Simple Pricing. Complete Mandi Business Management.",
+      heroSubtitle: "Everything your commission business needs in one powerful system — for one simple monthly price.",
+      planName: "MandiOS",
+      perMonth: "/ month",
+      setupFee: "Setup Fee",
+      freeNow: "FREE NOW",
+      setupOffer: "Rs. 10,000 setup fee currently FREE during our launch offer",
+      cta: "Start Your Free Trial",
+      afterTrial: "After your 30-day free trial, continue for Rs. 5,000/month.",
+      trialTitle: "30 Days Free Trial",
+      trialDescription: "Use MandiOS for 30 days and experience your complete mandi business digitally before subscribing.",
+      includedEyebrow: "One complete system",
+      includedTitle: "Everything You Need to Run Your Mandi Business",
+      features: ["Purchases & Lots", "Sales Management", "Customer & Supplier Khata", "Ledger & Hisaab", "Commission Management", "Bardana / Crate Management", "Cash Receive & Payments", "Expenses", "Employees & Munshi Management", "Business Reports", "Dashboard & Business Insights", "Customer & Supplier Login", "Multi-user Access", "Secure Business Data"],
+      valueEyebrow: "The business value",
+      valueTitle: "Why Rs. 5,000/Month?",
+      valueDescription: "Instead of managing information across registers, bahi khata, separate notebooks, manual calculations, munshi records, and different files, MandiOS brings your business into one digital system.",
+      valuePoints: ["Less manual work", "Better control", "Faster information", "Complete business visibility"],
+      transparencyEyebrow: "No hidden pricing",
+      transparencyTitle: "Current Launch Offer",
+      transparencyItems: [{ label: "Monthly Fee", value: "Rs. 5,000 / month" }, { label: "Setup Fee", value: "Rs. 10,000 → FREE for now" }, { label: "Free Trial", value: "30 Days" }],
+      faqEyebrow: "Clear answers",
+      faqTitle: "Pricing FAQ",
+      faqs: [
+        { question: "Is there a free trial?", answer: "Yes. MandiOS offers a 30-day free trial." },
+        { question: "How much does MandiOS cost?", answer: "MandiOS costs Rs. 5,000 per month after the free trial." },
+        { question: "Is there a setup fee?", answer: "The standard setup fee is Rs. 10,000, but it is currently FREE during the launch offer." },
+        { question: "Do I need different packages for different features?", answer: "No. MandiOS uses one simple pricing plan with the complete system included." },
+        { question: "Can multiple staff members use MandiOS?", answer: "Yes. MandiOS supports multiple staff members through its existing user and role system. Access is managed according to each user's assigned role." }
+      ]
     }
   },
   ur: {
@@ -241,6 +277,7 @@ export const translations = {
       process: "ترقیاتی مراحل",
       challenges: "تکنیکی حل",
       roadmap: "مستقبل کی منصوبے",
+      pricing: "قیمت",
       liveDemo: "لائیو  ",
       whatsAppBtn: "واٹس ایپ"
     },
@@ -474,6 +511,41 @@ export const translations = {
       devSpec: "ساس (SaaS) ای آر پی، ملٹی ٹیننٹ بیک اینڈز اور کسٹم ڈیش بورڈز کے ماہر۔",
       rights: "MandiOS ERP Portfolio. Independently Designed & Developed.",
       backToTop: "اوپر جائیں"
+    },
+    pricing: {
+      metaTitle: "MandiOS قیمت | کمیشن ایجنٹس کے لیے آسان ای آر پی قیمت",
+      metaDescription: "MandiOS پھل اور سبزی کے کمیشن ایجنٹس کے لیے مکمل منڈی بزنس مینجمنٹ صرف 5,000 روپے ماہانہ میں فراہم کرتا ہے، 30 دن کے فری ٹرائل کے ساتھ۔",
+      eyebrow: "آسان اور واضح قیمت",
+      heroTitle: "آسان قیمت۔ مکمل منڈی بزنس مینجمنٹ۔",
+      heroSubtitle: "آپ کے کمیشن کاروبار کے لیے ضروری ہر سہولت ایک طاقتور سسٹم میں، صرف ایک سادہ ماہانہ قیمت پر۔",
+      planName: "MandiOS",
+      perMonth: "/ ماہ",
+      setupFee: "سیٹ اپ فیس",
+      freeNow: "ابھی مفت",
+      setupOffer: "10,000 روپے کی سیٹ اپ فیس لانچ آفر کے دوران ابھی بالکل مفت ہے",
+      cta: "اپنا فری ٹرائل شروع کریں",
+      afterTrial: "30 دن کے فری ٹرائل کے بعد ماہانہ قیمت 5,000 روپے ہوگی۔",
+      trialTitle: "30 دن کا فری ٹرائل",
+      trialDescription: "30 دن تک MandiOS استعمال کریں اور سبسکرپشن سے پہلے اپنے مکمل منڈی کاروبار کو ڈیجیٹل انداز میں آزما کر دیکھیں۔",
+      includedEyebrow: "ایک مکمل سسٹم",
+      includedTitle: "منڈی کاروبار چلانے کے لیے ہر ضروری سہولت",
+      features: ["خریداری اور لاٹس", "فروخت کا انتظام", "گاہک اور سپلائر کھاتہ", "لیجر اور حساب", "کمیشن مینجمنٹ", "باردانہ / کریٹ مینجمنٹ", "کیش وصولی اور ادائیگیاں", "اخراجات", "ملازمین اور منشی مینجمنٹ", "کاروباری رپورٹس", "ڈیش بورڈ اور کاروباری بصیرت", "گاہک اور سپلائر لاگ اِن", "متعدد صارفین کی رسائی", "محفوظ کاروباری ڈیٹا"],
+      valueEyebrow: "کاروباری فائدہ",
+      valueTitle: "5,000 روپے ماہانہ کیوں؟",
+      valueDescription: "رجسٹر، بہی کھاتہ، الگ نوٹ بکس، دستی حساب، منشی کے ریکارڈ اور مختلف فائلوں میں معلومات سنبھالنے کے بجائے MandiOS آپ کا پورا کاروبار ایک ڈیجیٹل سسٹم میں لے آتا ہے۔",
+      valuePoints: ["کم دستی کام", "بہتر کنٹرول", "معلومات تک تیز رسائی", "کاروبار کی مکمل نظر"],
+      transparencyEyebrow: "کوئی پوشیدہ قیمت نہیں",
+      transparencyTitle: "موجودہ لانچ آفر",
+      transparencyItems: [{ label: "ماہانہ فیس", value: "5,000 روپے / ماہ" }, { label: "سیٹ اپ فیس", value: "10,000 روپے → ابھی مفت" }, { label: "فری ٹرائل", value: "30 دن" }],
+      faqEyebrow: "آسان جوابات",
+      faqTitle: "قیمت کے بارے میں سوالات",
+      faqs: [
+        { question: "کیا فری ٹرائل موجود ہے؟", answer: "جی ہاں، MandiOS کا 30 دن کا فری ٹرائل موجود ہے۔" },
+        { question: "MandiOS کی قیمت کتنی ہے؟", answer: "فری ٹرائل کے بعد MandiOS کی قیمت 5,000 روپے ماہانہ ہے۔" },
+        { question: "کیا سیٹ اپ فیس ہے؟", answer: "عام سیٹ اپ فیس 10,000 روپے ہے، لیکن لانچ آفر کے دوران یہ ابھی بالکل مفت ہے۔" },
+        { question: "کیا مختلف فیچرز کے لیے الگ پیکیجز لینے ہوں گے؟", answer: "نہیں، MandiOS ایک ہی سادہ پلان میں مکمل سسٹم فراہم کرتا ہے۔" },
+        { question: "کیا متعدد ملازمین MandiOS استعمال کر سکتے ہیں؟", answer: "جی ہاں، MandiOS کا موجودہ یوزر اور رول سسٹم متعدد ملازمین کو سپورٹ کرتا ہے۔ ہر صارف کی رسائی اس کے مقرر کردہ رول کے مطابق ہوتی ہے۔" }
+      ]
     }
   }
 };
